@@ -4,28 +4,23 @@ import time
 import os
 from datetime import datetime
 
-# --- Configuration for Home Assistant ---
-# Base URL for your Home Assistant instance.
-# Falls back to "http://100.64.0.4:8123" if HA_URL environment variable is not set.
+# Home Assistant config
+# falls back to "http://100.64.0.4:8123" if HA_URL environment variable is not set.
 HOME_ASSISTANT_URL = os.getenv("HA_URL", "http://100.64.0.4:8123")
 
-# Webhook IDs defined in your Home Assistant automations.
-# These must exactly match the 'webhook_id' configured in Home Assistant.
-WEBHOOK_ID_CRITICAL_MIGRAINE = "tuva_eMDDtZzRZumbnQw34xL"
+# webhook ids
+WEBHOOK_ID_CRITICAL_MIGRAINE = "fYoXTQRVijFUyxpn2pdFNp-h"
 WEBHOOK_ID_MIGRAINE_WARNING = "tuva_eMDDtZzRZumbnQw34xL"
 
 # Probability thresholds (0-1) for triggering different alerts.
-CRITICAL_THRESHOLD = 0.75  # Probability >= this will trigger a critical alert.
-WARNING_THRESHOLD = 0.40   # Probability >= this (and < critical) will trigger a warning alert.
+CRITICAL_THRESHOLD = 0.75
+WARNING_THRESHOLD = 0.40
 
-# --- Configuration for External Migraine API ---
-# The URL of the external API that provides migraine probability data.
-# Falls back to "http://100.64.0.15:5000/prediction" if EXTERNAL_API_URL environment variable is not set.
+# Configuration for External Migraine API ---
+# Falls back to http://100.64.0.15:5000/prediction if EXTERNAL_API_URL environment variable is not set.
 EXTERNAL_MIGRAINE_API_URL = os.getenv("EXTERNAL_API_URL", "http://100.64.0.15:5000/prediction")
 
-# --- Headers for Webhook POST Requests ---
-# For Home Assistant webhooks, the URL itself contains the "secret" ID,
-# so an Authorization header with a Bearer token is not typically required.
+# webhook headers
 WEBHOOK_HEADERS = {
     "Content-Type": "application/json",
 }
@@ -37,8 +32,8 @@ def get_migraine_data_from_external_api() -> dict | None:
     It expects a JSON response with at least a 'migraine_probability' key.
     Example expected JSON structure:
     {
-        "timestamp": 1732197000,
         "migraine_probability": 0.75,
+        "timestamp": 1732197000,
         "source": "manual_input"
     }
 
