@@ -11,8 +11,8 @@ HOME_ASSISTANT_URL = os.getenv("HA_URL", "http://100.64.0.4:8123")
 
 # Webhook IDs defined in your Home Assistant automations.
 # These must exactly match the 'webhook_id' configured in Home Assistant.
-WEBHOOK_ID_CRITICAL_MIGRAINE = "critical_migraine_webhook"
-WEBHOOK_ID_MIGRAINE_WARNING = "migraine_warning_webhook"
+WEBHOOK_ID_CRITICAL_MIGRAINE = "tuva_eMDDtZzRZumbnQw34xL"
+WEBHOOK_ID_MIGRAINE_WARNING = "tuva_eMDDtZzRZumbnQw34xL"
 
 # Probability thresholds (0-1) for triggering different alerts.
 CRITICAL_THRESHOLD = 0.75  # Probability >= this will trigger a critical alert.
@@ -95,6 +95,7 @@ def trigger_home_assistant_webhook(webhook_id: str, payload_data: dict) -> None:
     """
     webhook_url = f"{HOME_ASSISTANT_URL}/api/webhook/{webhook_id}"
 
+    print("WEBHOOK : "+ webhook_url)
     print(f"[{datetime.now().isoformat()}] Triggering Home Assistant webhook: '{webhook_id}' with payload: {json.dumps(payload_data)}")
 
     response = None
