@@ -1,0 +1,14 @@
+# Migraine Prediction Service Dependencies
+
+# Web Framework
+Flask==3.0.0
+flask-cors==4.0.0
+
+# Data Processing (for explore_data.py prototype)
+pandas==2.1.4
+
+# Date/Time handling
+python-dateutil==2.8.2
+
+# Additional utilities
+Werkzeug==3.0.1
