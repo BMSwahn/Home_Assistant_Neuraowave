@@ -1,0 +1,36 @@
+esphome:
+  name: led_esp
+
+esp32:
+  board: 4d_systems_esp32s3_gen4_r8n16
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  - platform: esphome
+    password: ""
+
+wifi:
+  ssid: "Kalmar Science Park - 5G"
+  password: "SolenSolen0"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Led Esp Fallback Hotspot"
+    password: "5fYVvIxmbyoO"
+
+captive_portal:
+
+switch:
+  - platform: gpio
+    pin: 2
+    name: "LED GPIO2"
+    restore_mode: ALWAYS_OFF
+    
