@@ -136,9 +136,11 @@ def main() -> None:
 
         if probability >= CRITICAL_THRESHOLD:
             print(f"[{datetime.now().isoformat()}] Migraine probability {probability:.2f} is CRITICAL (>= {CRITICAL_THRESHOLD:.2f}).")
+            print(webhook_payload)
             trigger_home_assistant_webhook(WEBHOOK_ID_CRITICAL_MIGRAINE, webhook_payload)
         elif probability >= WARNING_THRESHOLD:
             print(f"[{datetime.now().isoformat()}] Migraine probability {probability:.2f} is WARNING (>= {WARNING_THRESHOLD:.2f}).")
+            print(webhook_payload)
             trigger_home_assistant_webhook(WEBHOOK_ID_MIGRAINE_WARNING, webhook_payload)
         else:
             print(f"[{datetime.now().isoformat()}] Migraine probability {probability:.2f} is low (below {WARNING_THRESHOLD:.2f}). No alert fired.")
